@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\danger.png" />
+    <None Remove="Assets\Images\success.png" />
+    <None Remove="Assets\Images\Tick.jpg" />
+    <None Remove="Assets\Images\warning.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\danger.png" />
+    <Resource Include="Assets\Images\success.png" />
+    <Resource Include="Assets\Images\warning.png" />
+  </ItemGroup>
+
+</Project>
