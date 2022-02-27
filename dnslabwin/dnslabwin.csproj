@@ -15,9 +15,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\danger.png" />
-    <Resource Include="Assets\Images\success.png" />
-    <Resource Include="Assets\Images\warning.png" />
+    <Content Include="Assets\Images\danger.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\success.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\warning.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utilities\" />
   </ItemGroup>
 
 </Project>
