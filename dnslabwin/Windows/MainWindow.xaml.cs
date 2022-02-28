@@ -40,7 +40,6 @@ namespace dnslabwin
             new AuthWindow().ShowDialog();
 
             imgAccountInfo.SetAlert(Enums.AlertEnum.Danger);
-           
             ((Button)sender).IsEnabled = true;
         }
 
@@ -51,7 +50,6 @@ namespace dnslabwin
             new AuthWindow().ShowDialog();
 
             imgUpdateInfo.SetAlert(Enums.AlertEnum.Warning);
-
             ((Button)sender).IsEnabled = true;
         }
 
@@ -62,7 +60,6 @@ namespace dnslabwin
             new AuthWindow().ShowDialog();
 
             imgIPInfo.SetAlert(Enums.AlertEnum.Success);
-
             ((Button)sender).IsEnabled = true;
         }
     }
