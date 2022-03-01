@@ -27,7 +27,7 @@ namespace dnslabwin
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitilizeData();
         }
 
         private void LoadAccountInfo()
@@ -83,7 +83,7 @@ namespace dnslabwin
             ((Button)sender).IsEnabled = true;
         }
 
-        public void Window_Loaded(object sender, RoutedEventArgs e)
+        public void InitilizeData()
         {
             if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
             {
@@ -92,6 +92,7 @@ namespace dnslabwin
             }
             else
             {
+                InitializeComponent();
                 LoadAccountInfo();
                 txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { "84.241.47.110" }";
             }

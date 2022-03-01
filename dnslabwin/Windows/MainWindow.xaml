@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnslabwin" xmlns:ns="clr-namespace:dnslabwin.Converters"
         mc:Ignorable="d"
-        Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <ns:NotConverter x:Key="NotConverter" />
         <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />

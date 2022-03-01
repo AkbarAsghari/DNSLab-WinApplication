@@ -72,7 +72,7 @@ namespace dnslabwin.Windows
                     SettingsUtility.Set(SettingKeys.UserInfo, JsonSerializer.Serialize(userInfo));
                     this.Close();
                     _Main.Show();
-                    _Main.Window_Loaded(this, e);
+                    _Main.InitilizeData();
                 }
             }
 
