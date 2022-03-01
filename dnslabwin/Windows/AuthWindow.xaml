@@ -65,7 +65,7 @@
         </Grid>
         <Grid Grid.Row="4">
             <Grid Margin="40 3 40 5">
-                <ProgressBar IsIndeterminate="True" Visibility="{Binding ElementName=btnEditAccount,Converter={StaticResource NotConverter} , Path=IsEnabled}"></ProgressBar>
+                <ProgressBar IsIndeterminate="True" Visibility="{Binding ElementName=btnSignIn,Converter={StaticResource NotConverter} , Path=IsEnabled}"></ProgressBar>
                 <Button Name="btnSignIn" Visibility="{Binding ElementName=btnSignIn , Converter={StaticResource BoolToHiddenConverter} , Path=IsEnabled}"  FontSize="16" Background="LightSeaGreen" Foreground="White" Content="Sign In" Click="btnSignIn_Click" />
             </Grid>
         </Grid>

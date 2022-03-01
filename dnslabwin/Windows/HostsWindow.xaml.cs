@@ -1,4 +1,5 @@
 ﻿using dnslabwin.DTOs;
+using dnslabwin.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,75 +34,16 @@ namespace dnslabwin.Windows
 
         private async Task<List<HostNamesAndCheckedDTO>> LoadHostsAsync()
         {
-            await Task.Delay(5000);
-            return new List<HostNamesAndCheckedDTO>
+            var hostsSummary = await new DNSRepository().GetOwnHostsSummary();
+
+            if (hostsSummary != null)
             {
-                new HostNamesAndCheckedDTO
+                return hostsSummary.Select(x => new HostNamesAndCheckedDTO
                 {
-                     HostName = "akbar.dnslab.ir",
-                     IsChecked = true,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = true,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = true,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = true,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = false,
-                },
-                new HostNamesAndCheckedDTO
-                {
-                     HostName = "local.dnslab.ir",
-                     IsChecked = true,
-                }
-            };
+                    HostName = x.Address
+                }).ToList();
+            }
+            return null;
         }
     }
 }
