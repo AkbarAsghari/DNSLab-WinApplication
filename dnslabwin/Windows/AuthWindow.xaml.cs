@@ -64,11 +64,16 @@ namespace dnslabwin.Windows
             {
                 SettingsUtility.Set(SettingKeys.Token, token);
 
-                var userInfo = await repo.Get();
+                repo = new AccountRepository();
 
-                SettingsUtility.Set(SettingKeys.UserInfo, JsonSerializer.Serialize(userInfo));
-                this.Close();
-                _Main.Show();
+                var userInfo = await repo.Get();
+                if (userInfo != null)
+                {
+                    SettingsUtility.Set(SettingKeys.UserInfo, JsonSerializer.Serialize(userInfo));
+                    this.Close();
+                    _Main.Show();
+                    _Main.Window_Loaded(this, e);
+                }
             }
 
             btnSignIn.IsEnabled = true;

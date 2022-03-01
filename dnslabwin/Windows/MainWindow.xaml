@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnslabwin" xmlns:ns="clr-namespace:dnslabwin.Converters"
         mc:Ignorable="d"
-        Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <ns:NotConverter x:Key="NotConverter" />
         <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
@@ -85,9 +85,9 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" VerticalAlignment="Center">Username:</TextBlock>
-                                <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="60 0 0 0" Name="txbUserName">Akbar</TextBlock>
+                                <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="60 0 0 0" Name="txbUserName"></TextBlock>
                                 <TextBlock Grid.Row="1" VerticalAlignment="Center">Email:</TextBlock>
-                                <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="35 0 0 0" Name="txbEmail">AkbarAsghari@outlook.com</TextBlock>
+                                <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="35 0 0 0" Name="txbEmail"></TextBlock>
                             </Grid>
                             <Grid Grid.Column="1" Grid.Row="1" Margin="5">
 

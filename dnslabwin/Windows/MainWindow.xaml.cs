@@ -1,10 +1,12 @@
-﻿using dnslabwin.Extensions;
+﻿using DNSLab.DTOs.User;
+using dnslabwin.Extensions;
 using dnslabwin.Utilities;
 using dnslabwin.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,15 +27,29 @@ namespace dnslabwin
     {
         public MainWindow()
         {
-            if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
+            InitializeComponent();
+        }
+
+        private void LoadAccountInfo()
+        {
+            try
             {
-                this.Hide();
-                new AuthWindow(this).Show();
+                string userInfoJson = SettingsUtility.Get(SettingKeys.UserInfo);
+                if (!String.IsNullOrEmpty(userInfoJson))
+                {
+                    var userInfo = JsonSerializer.Deserialize<UserInfo>(userInfoJson);
+                    txbUserName.Text = userInfo!.Username;
+                    txbEmail.Text = userInfo!.Email;
+                    imgAccountInfo.SetAlert(Enums.AlertEnum.Success);
+                }
+                else
+                {
+                    imgAccountInfo.SetAlert(Enums.AlertEnum.Warning);
+                }
             }
-            else
+            catch
             {
-                InitializeComponent();
-                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { "84.241.47.110" }";
+                imgAccountInfo.SetAlert(Enums.AlertEnum.Danger);
             }
         }
 
@@ -45,10 +61,7 @@ namespace dnslabwin
         private void btnEditAccount_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).IsEnabled = false;
-
             new AuthWindow(this).ShowDialog();
-
-            imgAccountInfo.SetAlert(Enums.AlertEnum.Danger);
             ((Button)sender).IsEnabled = true;
         }
 
@@ -68,6 +81,20 @@ namespace dnslabwin
 
             imgIPInfo.SetAlert(Enums.AlertEnum.Success);
             ((Button)sender).IsEnabled = true;
+        }
+
+        public void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
+            {
+                this.Hide();
+                new AuthWindow(this).Show();
+            }
+            else
+            {
+                LoadAccountInfo();
+                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { "84.241.47.110" }";
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using dnslabwin.Utilities;
+using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -16,6 +18,10 @@ namespace dnslabwin.Services
         public HttpService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+
+            string token = SettingsUtility.Get(SettingKeys.Token);
+            if (!String.IsNullOrEmpty(token))
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
         }
         public async Task<HttpResponseWraper<object>> Post<T>(string url, T data)
         {
