@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dnslabwin.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,6 +35,12 @@ namespace dnslabwin.Windows
                 FileName = e.Uri.AbsoluteUri
             });
             e.Handled = true;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
+                Application.Current.Shutdown();
         }
     }
 }

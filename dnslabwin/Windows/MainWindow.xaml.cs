@@ -1,4 +1,5 @@
 ﻿using dnslabwin.Extensions;
+using dnslabwin.Utilities;
 using dnslabwin.Windows;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,16 @@ namespace dnslabwin
     {
         public MainWindow()
         {
-            InitializeComponent();
-            txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { "84.241.47.110" }";
+            if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
+            {
+                this.Hide();
+                new AuthWindow().Show();
+            }
+            else
+            {
+                InitializeComponent();
+                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { "84.241.47.110" }";
+            }
         }
 
         private void ExitMenu_Click(object sender, RoutedEventArgs e)

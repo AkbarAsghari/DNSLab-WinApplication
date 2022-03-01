@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnslabwin.Windows"
         mc:Ignorable="d"
-        Title="DNSLab" Height="410" Width="365" ResizeMode="NoResize" Background="DimGray" >
+        Title="DNSLab" Height="410" Width="365" ResizeMode="NoResize" Background="DimGray" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23"></RowDefinition>
