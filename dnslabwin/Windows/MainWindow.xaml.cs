@@ -28,7 +28,7 @@ namespace dnslabwin
             if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
             {
                 this.Hide();
-                new AuthWindow().Show();
+                new AuthWindow(this).Show();
             }
             else
             {
@@ -46,7 +46,7 @@ namespace dnslabwin
         {
             ((Button)sender).IsEnabled = false;
 
-            new AuthWindow().ShowDialog();
+            new AuthWindow(this).ShowDialog();
 
             imgAccountInfo.SetAlert(Enums.AlertEnum.Danger);
             ((Button)sender).IsEnabled = true;
@@ -65,8 +65,6 @@ namespace dnslabwin
         private void bntRefreshNow_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).IsEnabled = false;
-
-            new AuthWindow().ShowDialog();
 
             imgIPInfo.SetAlert(Enums.AlertEnum.Success);
             ((Button)sender).IsEnabled = true;

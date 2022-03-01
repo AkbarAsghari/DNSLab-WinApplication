@@ -11,28 +11,27 @@ namespace dnslabwin.Utilities
     {
         public static void Set(SettingKeys key, string value)
         {
-            SettingsProperty prop;
-
-            if (Properties.Settings.Default.Properties[key.ToString()] != null)
+            switch (key)
             {
-                prop = Properties.Settings.Default.Properties[key.ToString()];
+                case SettingKeys.Token:
+                    Properties.Settings.Default.Token = value;
+                    break;
+                case SettingKeys.UserInfo:
+                    Properties.Settings.Default.UserInfo = value;
+                    break;
             }
-            else
-            {
-                prop = new SettingsProperty(key.ToString());
-                prop.PropertyType = typeof(string);
-                Properties.Settings.Default.Properties.Add(prop);
-                Properties.Settings.Default.Save();
-            }
-            Properties.Settings.Default.Properties[key.ToString()].DefaultValue = value;
             Properties.Settings.Default.Save();
         }
 
         public static string Get(SettingKeys key)
         {
-            if (Properties.Settings.Default.Properties[key.ToString()] != null)
-                return Properties.Settings.Default.Properties[key.ToString()].DefaultValue.ToString();
-
+            switch (key)
+            {
+                case SettingKeys.Token:
+                    return Properties.Settings.Default.Token;
+                case SettingKeys.UserInfo:
+                    return Properties.Settings.Default.UserInfo;
+            }
             return String.Empty;
         }
     }
@@ -40,5 +39,6 @@ namespace dnslabwin.Utilities
     public enum SettingKeys
     {
         Token = 0,
+        UserInfo = 1
     }
 }

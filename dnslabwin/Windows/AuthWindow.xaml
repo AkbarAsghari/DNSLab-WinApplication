@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dnslabwin.Windows"
+        xmlns:local="clr-namespace:dnslabwin.Windows" xmlns:ns="clr-namespace:dnslabwin.Converters"
         mc:Ignorable="d"
         Title="DNSLab" Height="410" Width="365" ResizeMode="NoResize" Background="DimGray" Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ns:NotConverter x:Key="NotConverter" />
+        <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23"></RowDefinition>
@@ -60,7 +64,10 @@
             </TextBlock>
         </Grid>
         <Grid Grid.Row="4">
-            <Button Name="btnSignIn" FontSize="16" Background="LightSeaGreen" Foreground="White" Margin="40 3 40 5" Content="Sign In" />
+            <Grid Margin="40 3 40 5">
+                <ProgressBar IsIndeterminate="True" Visibility="{Binding ElementName=btnEditAccount,Converter={StaticResource NotConverter} , Path=IsEnabled}"></ProgressBar>
+                <Button Name="btnSignIn" Visibility="{Binding ElementName=btnSignIn , Converter={StaticResource BoolToHiddenConverter} , Path=IsEnabled}"  FontSize="16" Background="LightSeaGreen" Foreground="White" Content="Sign In" Click="btnSignIn_Click" />
+            </Grid>
         </Grid>
         <Grid Grid.Row="5" Margin="40 0 40 0" >
             <DockPanel>

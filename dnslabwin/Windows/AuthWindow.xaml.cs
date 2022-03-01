@@ -1,9 +1,11 @@
-﻿using dnslabwin.Utilities;
+﻿using dnslabwin.Repository;
+using dnslabwin.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,9 +24,11 @@ namespace dnslabwin.Windows
     /// </summary>
     public partial class AuthWindow : Window
     {
-        public AuthWindow()
+        private readonly MainWindow _Main;
+        public AuthWindow(MainWindow mainWindow)
         {
             InitializeComponent();
+            _Main = mainWindow;
         }
 
         private void link_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -41,6 +45,33 @@ namespace dnslabwin.Windows
         {
             if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
                 Application.Current.Shutdown();
+        }
+
+        private async void btnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            btnSignIn.IsEnabled = false;
+
+            var repo = new AccountRepository();
+
+
+            var token = await repo.Login(new DNSLab.DTOs.User.AuthenticateDTO
+            {
+                Username = txtUserName.Text,
+                Password = txtPassword.Password
+            });
+
+            if (!String.IsNullOrEmpty(token))
+            {
+                SettingsUtility.Set(SettingKeys.Token, token);
+
+                var userInfo = await repo.Get();
+
+                SettingsUtility.Set(SettingKeys.UserInfo, JsonSerializer.Serialize(userInfo));
+                this.Close();
+                _Main.Show();
+            }
+
+            btnSignIn.IsEnabled = true;
         }
     }
 }
