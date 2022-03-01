@@ -28,6 +28,7 @@ namespace dnslabwin.Windows
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             HostListView.ItemsSource = await LoadHostsAsync();
+            HostListView.Visibility = Visibility.Visible;
         }
 
         private async Task<List<HostNamesAndCheckedDTO>> LoadHostsAsync()
