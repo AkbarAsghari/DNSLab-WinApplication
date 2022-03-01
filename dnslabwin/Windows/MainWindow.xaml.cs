@@ -47,7 +47,7 @@ namespace dnslabwin
         {
             ((Button)sender).IsEnabled = false;
 
-            new AuthWindow().ShowDialog();
+            new HostsWindow().ShowDialog();
 
             imgUpdateInfo.SetAlert(Enums.AlertEnum.Warning);
             ((Button)sender).IsEnabled = true;
