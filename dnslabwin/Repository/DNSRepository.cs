@@ -1,6 +1,7 @@
 ﻿
 using dnslabwin.DTOs.DNS;
 using dnslabwin.Services;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -26,6 +27,12 @@ namespace dnslabwin.Repository
             {
                 return response.Response;
             }
+        }
+
+        public async Task<bool> UpdateDNSIPAddress(IEnumerable<Guid> hostIds)
+        {
+            var response = await _httpService.Put<IEnumerable<Guid>,bool>($"/DNS/UpdateDNSIPAddress",hostIds);
+            return response.Response;
         }
     }
 }

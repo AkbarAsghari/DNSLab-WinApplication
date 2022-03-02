@@ -19,6 +19,9 @@ namespace dnslabwin.Utilities
                 case SettingKeys.UserInfo:
                     Properties.Settings.Default.UserInfo = value;
                     break;
+                case SettingKeys.SelectedHosts:
+                    Properties.Settings.Default.SelectedHosts = value;
+                    break;
             }
             Properties.Settings.Default.Save();
         }
@@ -31,6 +34,8 @@ namespace dnslabwin.Utilities
                     return Properties.Settings.Default.Token;
                 case SettingKeys.UserInfo:
                     return Properties.Settings.Default.UserInfo;
+                case SettingKeys.SelectedHosts:
+                    return Properties.Settings.Default.SelectedHosts;
             }
             return String.Empty;
         }
@@ -39,6 +44,7 @@ namespace dnslabwin.Utilities
     public enum SettingKeys
     {
         Token = 0,
-        UserInfo = 1
+        UserInfo = 1,
+        SelectedHosts = 2,
     }
 }

@@ -46,5 +46,17 @@ namespace dnslabwin.Properties {
                 this["UserInfo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SelectedHosts {
+            get {
+                return ((string)(this["SelectedHosts"]));
+            }
+            set {
+                this["SelectedHosts"] = value;
+            }
+        }
     }
 }

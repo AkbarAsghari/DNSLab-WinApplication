@@ -1,9 +1,11 @@
 ﻿using dnslabwin.DTOs;
 using dnslabwin.Repository;
+using dnslabwin.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,14 +38,42 @@ namespace dnslabwin.Windows
         {
             var hostsSummary = await new DNSRepository().GetOwnHostsSummary();
 
+            IEnumerable<Guid> selectedHosts = new List<Guid>();
+            string strSelectedHosts = SettingsUtility.Get(SettingKeys.SelectedHosts);
+            if (!String.IsNullOrEmpty(strSelectedHosts))
+                selectedHosts = JsonSerializer.Deserialize<IEnumerable<Guid>>(strSelectedHosts)!.ToList();
+
             if (hostsSummary != null)
             {
                 return hostsSummary.Select(x => new HostNamesAndCheckedDTO
                 {
+                    Id = x.Id,
+                    IsChecked = selectedHosts.Any(s => s == x.Id),
                     HostName = x.Address
                 }).ToList();
             }
             return null;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (!((IEnumerable<HostNamesAndCheckedDTO>)HostListView.ItemsSource).Any(x => x.IsChecked == true))
+            {
+                SettingsUtility.Set(SettingKeys.SelectedHosts, String.Empty);
+                this.Close();
+            }
+
+            var selectedHostsId = ((IEnumerable<HostNamesAndCheckedDTO>)HostListView.ItemsSource)
+                                        .Where(x => x.IsChecked == true)
+                                        .Select(x => x.Id);
+            SettingsUtility.Set(SettingKeys.SelectedHosts, JsonSerializer.Serialize(selectedHostsId));
+
+            this.Close();
         }
     }
 }

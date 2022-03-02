@@ -8,6 +8,7 @@ namespace dnslabwin.DTOs
 {
     public class HostNamesAndCheckedDTO
     {
+        public Guid Id { get; set; }
         public string HostName { get; set; }
         public bool IsChecked { get; set; }
     }
