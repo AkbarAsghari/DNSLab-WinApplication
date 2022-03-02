@@ -49,8 +49,6 @@ namespace dnslabwin
             updateRemainTimer.Interval = TimeSpan.FromSeconds(1);
             updateRemainTimer.Tick += UpdateRemainTimer_Tick;
             updateRemainTimer.Start();
-
-
         }
 
         private void UpdateRemainTimer_Tick(object? sender, EventArgs e)
@@ -69,14 +67,20 @@ namespace dnslabwin
 
         private async Task UpdateIPAddress()
         {
+            bntRefreshNow.IsEnabled = false;
+
             var ip = await _IPRepository.GetIP();
             txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { ip.iPv4 }";
             txbIPAddress.Text = ip.iPv4;
             imgIPInfo.SetAlert(Enums.AlertEnum.Success);
+
+            bntRefreshNow.IsEnabled = true;
         }
 
         private async Task UpdateDNSIPAddress()
         {
+            btnEditHost.IsEnabled = false;
+
             IEnumerable<Guid> selectedHosts = new List<Guid>();
             string strSelectedHosts = SettingsUtility.Get(SettingKeys.SelectedHosts);
             if (!String.IsNullOrEmpty(strSelectedHosts))
@@ -101,6 +105,7 @@ namespace dnslabwin
                 }
             }
 
+            btnEditHost.IsEnabled = true;
         }
 
         private void LoadAccountInfo()
