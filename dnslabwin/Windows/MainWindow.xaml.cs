@@ -1,5 +1,6 @@
 ﻿using DNSLab.DTOs.User;
 using dnslabwin.Extensions;
+using dnslabwin.Repository;
 using dnslabwin.Utilities;
 using dnslabwin.Windows;
 using System;
@@ -17,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace dnslabwin
 {
@@ -25,9 +27,80 @@ namespace dnslabwin
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private TimeSpan RemainTime;
+        private readonly IPRepository _IPRepository;
+        private readonly DNSRepository _DNSRepository;
         public MainWindow()
         {
             InitilizeData();
+
+            _IPRepository = new IPRepository();
+            _DNSRepository = new DNSRepository();
+
+            RemainTime = new TimeSpan(0, 5, 0);
+
+            DispatcherTimer checkForUpdateHostsIPTimer = new DispatcherTimer();
+            checkForUpdateHostsIPTimer.Interval = RemainTime;
+            checkForUpdateHostsIPTimer.Tick += CheckForUpdateHostsIPTimer_Tick;
+            checkForUpdateHostsIPTimer.Start();
+
+            DispatcherTimer updateRemainTimer = new DispatcherTimer();
+            updateRemainTimer.Interval = TimeSpan.FromSeconds(1);
+            updateRemainTimer.Tick += UpdateRemainTimer_Tick;
+            updateRemainTimer.Start();
+
+
+        }
+
+        private void UpdateRemainTimer_Tick(object? sender, EventArgs e)
+        {
+            RemainTime = RemainTime.Add(new TimeSpan(0, 0, -1));
+
+            txbNextChangeTime.Text = $"{RemainTime.Minutes} min {RemainTime.Seconds} sec";
+        }
+
+        private async void CheckForUpdateHostsIPTimer_Tick(object? sender, EventArgs e)
+        {
+            RemainTime = new TimeSpan(0, 5, 0);
+            await UpdateIPAddress();
+            await UpdateDNSIPAddress();
+        }
+
+        private async Task UpdateIPAddress()
+        {
+            var ip = await _IPRepository.GetIP();
+            txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { ip.iPv4 }";
+            txbIPAddress.Text = ip.iPv4;
+            imgIPInfo.SetAlert(Enums.AlertEnum.Success);
+        }
+
+        private async Task UpdateDNSIPAddress()
+        {
+            IEnumerable<Guid> selectedHosts = new List<Guid>();
+            string strSelectedHosts = SettingsUtility.Get(SettingKeys.SelectedHosts);
+            if (!String.IsNullOrEmpty(strSelectedHosts))
+                selectedHosts = JsonSerializer.Deserialize<IEnumerable<Guid>>(strSelectedHosts)!.ToList();
+
+            if (selectedHosts.Count() == 0)
+            {
+                imgUpdateInfo.SetAlert(Enums.AlertEnum.Warning);
+                txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected";
+            }
+            else
+            {
+                if (await _DNSRepository.UpdateDNSIPAddress(selectedHosts))
+                {
+                    imgUpdateInfo.SetAlert(Enums.AlertEnum.Success);
+                    txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected for dynamic update";
+                }
+                else
+                {
+                    imgUpdateInfo.SetAlert(Enums.AlertEnum.Danger);
+                    txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts does't update";
+                }
+            }
+
         }
 
         private void LoadAccountInfo()
@@ -65,21 +138,23 @@ namespace dnslabwin
             ((Button)sender).IsEnabled = true;
         }
 
-        private void btnEditHost_Click(object sender, RoutedEventArgs e)
+        private async void btnEditHost_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).IsEnabled = false;
 
             new HostsWindow().ShowDialog();
 
-            imgUpdateInfo.SetAlert(Enums.AlertEnum.Warning);
+            await UpdateDNSIPAddress();
+
             ((Button)sender).IsEnabled = true;
         }
 
-        private void bntRefreshNow_Click(object sender, RoutedEventArgs e)
+
+        private async void bntRefreshNow_Click(object sender, RoutedEventArgs e)
         {
             ((Button)sender).IsEnabled = false;
-
-            imgIPInfo.SetAlert(Enums.AlertEnum.Success);
+            await UpdateIPAddress();
+            await UpdateDNSIPAddress();
             ((Button)sender).IsEnabled = true;
         }
 
@@ -94,8 +169,13 @@ namespace dnslabwin
             {
                 InitializeComponent();
                 LoadAccountInfo();
-                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { "84.241.47.110" }";
             }
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await UpdateIPAddress();
+            await UpdateDNSIPAddress();
         }
     }
 }
