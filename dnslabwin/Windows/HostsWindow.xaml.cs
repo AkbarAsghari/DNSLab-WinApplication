@@ -43,6 +43,12 @@ namespace dnslabwin.Windows
             if (!String.IsNullOrEmpty(strSelectedHosts))
                 selectedHosts = JsonSerializer.Deserialize<IEnumerable<Guid>>(strSelectedHosts)!.ToList();
 
+            selectedHosts = selectedHosts.Where(x => hostsSummary.Select(h => h.Id).Contains(x));
+            if (selectedHosts.Count() == 0)
+                SettingsUtility.Set(SettingKeys.SelectedHosts, String.Empty);
+            else
+                SettingsUtility.Set(SettingKeys.SelectedHosts, JsonSerializer.Serialize(selectedHosts));
+
             if (hostsSummary != null)
             {
                 return hostsSummary.Select(x => new HostNamesAndCheckedDTO
