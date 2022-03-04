@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace DNSLabWinApp
 {
@@ -20,6 +21,20 @@ namespace DNSLabWinApp
             myMutex = new Mutex(true, "DNSLab", out bool aIsNewInstance);
             if (!aIsNewInstance)
                 App.Current.Shutdown();
+        }
+
+        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            // Process unhandled exception
+
+            string exceptionMessage = e.Exception.Message.ToLower();
+            if (exceptionMessage.Contains("an error occurred while sending the request"))
+                MessageBox.Show("unHandler Exception ---> Please check your network");
+
+            // Prevent default unhandled exception processing
+            e.Handled = true;
+
+            Application.Current.Shutdown();
         }
     }
 }

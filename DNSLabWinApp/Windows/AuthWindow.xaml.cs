@@ -64,6 +64,7 @@ namespace dnslabwin.Windows
             if (!String.IsNullOrEmpty(token))
             {
                 SettingsUtility.Set(SettingKeys.Token, token);
+                SettingsUtility.Set(SettingKeys.SelectedHosts, String.Empty);
 
                 repo = new AccountRepository();
 
@@ -73,7 +74,7 @@ namespace dnslabwin.Windows
                     SettingsUtility.Set(SettingKeys.UserInfo, JsonConvert.SerializeObject(userInfo));
                     this.Close();
                     _Main.Show();
-                    _Main.InitilizeData();
+                    _Main.InitilizeDataAsync();
                 }
             }
 

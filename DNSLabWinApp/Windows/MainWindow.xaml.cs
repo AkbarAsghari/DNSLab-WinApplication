@@ -31,14 +31,11 @@ namespace dnslabwin
     {
 
         private TimeSpan RemainTime;
-        private readonly IPRepository _IPRepository;
-        private readonly DNSRepository _DNSRepository;
+        private IPRepository _IPRepository;
+        private DNSRepository _DNSRepository;
         public MainWindow()
         {
-            InitilizeData();
-
-            _IPRepository = new IPRepository();
-            _DNSRepository = new DNSRepository();
+            InitilizeDataAsync();
 
             RemainTime = new TimeSpan(0, 5, 0);
 
@@ -168,8 +165,11 @@ namespace dnslabwin
             ((Button)sender).IsEnabled = true;
         }
 
-        public void InitilizeData()
+        public async Task InitilizeDataAsync()
         {
+            _IPRepository = new IPRepository();
+            _DNSRepository = new DNSRepository();
+
             if (String.IsNullOrEmpty(SettingsUtility.Get(SettingKeys.Token)))
             {
                 this.Hide();
@@ -179,6 +179,7 @@ namespace dnslabwin
             {
                 InitializeComponent();
                 LoadAccountInfo();
+                await UpdateDNSIPAddress();
             }
         }
 
