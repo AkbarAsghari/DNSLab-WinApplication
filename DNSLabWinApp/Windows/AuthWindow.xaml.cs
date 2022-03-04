@@ -74,7 +74,7 @@ namespace dnslabwin.Windows
                     SettingsUtility.Set(SettingKeys.UserInfo, JsonConvert.SerializeObject(userInfo));
                     this.Close();
                     _Main.Show();
-                    _Main.InitilizeDataAsync();
+                    await _Main.InitilizeDataAsync();
                 }
             }
 

@@ -21,6 +21,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using DNSLabWinApp.Repository;
 using DNSLabWinApp.Enums;
+using AutoUpdaterDotNET;
 
 namespace dnslabwin
 {
@@ -185,6 +186,8 @@ namespace dnslabwin
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            AutoUpdater.Start("http://api.dnslab.ir/updates/win/check");
+
             await UpdateIPAddress();
             await UpdateDNSIPAddress();
         }
