@@ -30,7 +30,7 @@ namespace DNSLabWinApp.Windows
 
             notifyIcon = new System.Windows.Forms.NotifyIcon();
             notifyIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + "/Assets/Images/icon.ico");
-            notifyIcon.DoubleClick += new EventHandler(notifyIcon_DoubleClick);
+            notifyIcon.MouseDown += NotifyIcon_MouseDown; ; ;
 
             // Initialize contextMenu1
             var contextMenu = new System.Windows.Forms.ContextMenu();
@@ -55,6 +55,15 @@ namespace DNSLabWinApp.Windows
             notifyIcon.ContextMenu = contextMenu;
         }
 
+        private void NotifyIcon_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                mainWindow.Show();
+                mainWindow.Focus();
+            }
+        }
+
         private void MenuRefresh_Click(object sender, EventArgs e)
         {
             mainWindow.bntRefreshNow_Click(null, null);
@@ -66,11 +75,6 @@ namespace DNSLabWinApp.Windows
             Application.Current.Shutdown();
         }
 
-        private void notifyIcon_DoubleClick(object sender, EventArgs e)
-        {
-            mainWindow.Show();
-            mainWindow.Focus();
-        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

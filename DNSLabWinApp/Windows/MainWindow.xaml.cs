@@ -38,9 +38,16 @@ namespace dnslabwin
         private readonly TaskbarTrayIconWindow NotifyIcon;
         public MainWindow()
         {
+            NotifyIcon = new TaskbarTrayIconWindow(this);
+
+            if (bool.Parse(SettingsUtility.Get(SettingKeys.LaunchStartUp)))
+            {
+                NotifyIcon.Show();
+                this.Hide();
+            }
+
             InitilizeDataAsync().GetAwaiter();
 
-            NotifyIcon = new TaskbarTrayIconWindow(this);
 
             RemainTime = new TimeSpan(0, 5, 0);
 
@@ -120,7 +127,7 @@ namespace dnslabwin
                 if (!String.IsNullOrEmpty(userInfoJson))
                 {
                     var userInfo = JsonConvert.DeserializeObject<UserInfo>(userInfoJson);
-                    if (userInfo!=null)
+                    if (userInfo != null)
                     {
                         txbUserName.Text = userInfo.Username;
                         txbEmail.Text = userInfo.Email;
@@ -198,6 +205,8 @@ namespace dnslabwin
 
             await UpdateIPAddress();
             await UpdateDNSIPAddress();
+
+
         }
 
         private void SettingsMenu_Click(object sender, RoutedEventArgs e)
