@@ -35,9 +35,12 @@ namespace dnslabwin
         private TimeSpan RemainTime;
         private IPRepository _IPRepository;
         private DNSRepository _DNSRepository;
+        private readonly TaskbarTrayIconWindow NotifyIcon;
         public MainWindow()
         {
             InitilizeDataAsync();
+
+            NotifyIcon = new TaskbarTrayIconWindow(this);
 
             RemainTime = new TimeSpan(0, 5, 0);
 
@@ -159,12 +162,16 @@ namespace dnslabwin
         }
 
 
-        private async void bntRefreshNow_Click(object sender, RoutedEventArgs e)
+        public async void bntRefreshNow_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)sender).IsEnabled = false;
+            if (sender is Button)
+                ((Button)sender).IsEnabled = false;
+
             await UpdateIPAddress();
             await UpdateDNSIPAddress();
-            ((Button)sender).IsEnabled = true;
+
+            if (sender is Button)
+                ((Button)sender).IsEnabled = true;
         }
 
         public async Task InitilizeDataAsync()
@@ -196,6 +203,19 @@ namespace dnslabwin
         private void SettingsMenu_Click(object sender, RoutedEventArgs e)
         {
             new SettingsWindow().ShowDialog();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+            NotifyIcon.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            NotifyIcon.Show();
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }

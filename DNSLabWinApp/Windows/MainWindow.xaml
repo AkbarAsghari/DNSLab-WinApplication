@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnslabwin" xmlns:ns="clr-namespace:DNSLabWinApp.Converters"
         mc:Ignorable="d"
-        Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.Resources>
         <ns:NotConverter x:Key="NotConverter" />
         <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
@@ -14,7 +14,7 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Hide" />
+                    <MenuItem Header="_Hide" Click="MenuItem_Click"/>
                     <Separator />
                     <MenuItem Header="_Exit" Click="ExitMenu_Click" />
                 </MenuItem>
