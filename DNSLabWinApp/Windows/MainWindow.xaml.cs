@@ -38,7 +38,7 @@ namespace dnslabwin
         private readonly TaskbarTrayIconWindow NotifyIcon;
         public MainWindow()
         {
-            InitilizeDataAsync();
+            InitilizeDataAsync().GetAwaiter();
 
             NotifyIcon = new TaskbarTrayIconWindow(this);
 
