@@ -11,7 +11,7 @@
     <Setting Name="SelectedHosts" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="LunchStartUp" Type="System.Boolean" Scope="User">
+    <Setting Name="LaunchStartUp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

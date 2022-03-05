@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,25 +31,25 @@ namespace DNSLabWinApp.Windows
 
         private void LoadStartUpCheckBoxStatus()
         {
-            //chkRunInStartUp.IsChecked = bool.Parse(SettingsUtility.Get(SettingKeys.LunchStartUp));
+            chkLaunchStartUp.IsChecked = bool.Parse(SettingsUtility.Get(SettingKeys.LaunchStartUp));
         }
 
         private void chkRunInStartUp_Checked(object sender, RoutedEventArgs e)
         {
-           SettingsUtility.Set(SettingKeys.LunchStartUp,"true");
+            SettingsUtility.Set(SettingKeys.LaunchStartUp, "true");
 
-            var path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location); ;
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
-            key.SetValue("DNSLab", path);
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            Assembly curAssembly = Assembly.GetExecutingAssembly();
+            key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
         }
 
         private void chkRunInStartUp_Unchecked(object sender, RoutedEventArgs e)
         {
-            SettingsUtility.Set(SettingKeys.LunchStartUp, "false");
+            SettingsUtility.Set(SettingKeys.LaunchStartUp, "false");
 
-            var path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location); 
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(path, true);
-            key.DeleteValue("DNSLab", false);
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            Assembly curAssembly = Assembly.GetExecutingAssembly();
+            key.DeleteValue(curAssembly.GetName().Name, false);
         }
     }
 }
