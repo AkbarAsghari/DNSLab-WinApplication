@@ -22,6 +22,9 @@ namespace DNSLabWinApp.Utilities
                 case SettingKeys.SelectedHosts:
                     Properties.Settings.Default.SelectedHosts = value;
                     break;
+                case SettingKeys.LunchStartUp:
+                    Properties.Settings.Default.LunchStartUp = bool.Parse(value);
+                    break;
             }
             Properties.Settings.Default.Save();
         }
@@ -36,6 +39,8 @@ namespace DNSLabWinApp.Utilities
                     return Properties.Settings.Default.UserInfo;
                 case SettingKeys.SelectedHosts:
                     return Properties.Settings.Default.SelectedHosts;
+                case SettingKeys.LunchStartUp:
+                    return Properties.Settings.Default.LunchStartUp.ToString();
             }
             return String.Empty;
         }
@@ -46,5 +51,6 @@ namespace DNSLabWinApp.Utilities
         Token = 0,
         UserInfo = 1,
         SelectedHosts = 2,
+        LunchStartUp = 3,
     }
 }

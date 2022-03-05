@@ -20,6 +20,7 @@
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="_Copy IP Address" />
+                    <MenuItem Header="Settings" Click="SettingsMenu_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Tools">
                     <MenuItem Header="_Logs">

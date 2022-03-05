@@ -58,5 +58,17 @@ namespace DNSLabWinApp.Properties {
                 this["SelectedHosts"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LunchStartUp {
+            get {
+                return ((bool)(this["LunchStartUp"]));
+            }
+            set {
+                this["LunchStartUp"] = value;
+            }
+        }
     }
 }

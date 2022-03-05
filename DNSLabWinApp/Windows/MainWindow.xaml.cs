@@ -22,6 +22,7 @@ using System.Windows.Threading;
 using DNSLabWinApp.Repository;
 using DNSLabWinApp.Enums;
 using AutoUpdaterDotNET;
+using DNSLabWinApp.Windows;
 
 namespace dnslabwin
 {
@@ -190,6 +191,11 @@ namespace dnslabwin
 
             await UpdateIPAddress();
             await UpdateDNSIPAddress();
+        }
+
+        private void SettingsMenu_Click(object sender, RoutedEventArgs e)
+        {
+            new SettingsWindow().ShowDialog();
         }
     }
 }
