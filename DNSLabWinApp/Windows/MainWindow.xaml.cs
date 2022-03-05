@@ -40,12 +40,6 @@ namespace dnslabwin
         {
             NotifyIcon = new TaskbarTrayIconWindow(this);
 
-            if (bool.Parse(SettingsUtility.Get(SettingKeys.LaunchStartUp)))
-            {
-                NotifyIcon.Show();
-                this.Hide();
-            }
-
             InitilizeDataAsync().GetAwaiter();
 
 
@@ -60,6 +54,12 @@ namespace dnslabwin
             updateRemainTimer.Interval = TimeSpan.FromSeconds(1);
             updateRemainTimer.Tick += UpdateRemainTimer_Tick;
             updateRemainTimer.Start();
+
+            if (bool.Parse(SettingsUtility.Get(SettingKeys.LaunchStartUp)))
+            {
+                NotifyIcon.Show();
+                this.Hide();
+            }
         }
 
         private void UpdateRemainTimer_Tick(object sender, EventArgs e)
