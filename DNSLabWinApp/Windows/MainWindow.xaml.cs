@@ -183,6 +183,8 @@ namespace dnslabwin
 
         public async Task InitilizeDataAsync()
         {
+            AutoUpdater.Start("http://api.dnslab.ir/Files/update/win/check");
+
             _IPRepository = new IPRepository();
             _DNSRepository = new DNSRepository();
 
@@ -201,12 +203,8 @@ namespace dnslabwin
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            AutoUpdater.Start("http://api.dnslab.ir/updates/win/check");
-
             await UpdateIPAddress();
             await UpdateDNSIPAddress();
-
-
         }
 
         private void SettingsMenu_Click(object sender, RoutedEventArgs e)
