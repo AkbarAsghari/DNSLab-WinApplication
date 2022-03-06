@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0810B249B22AFD73AE917336C3D4FE80"
+        "OwnerKey" = "8:_1A47645B4F024C59861EEBA26CB0F347"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1A47645B4F024C59861EEBA26CB0F347"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,8 +39,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6C80741348416F0AC608912F6E030BCF"
+        "MsmKey" = "8:_AE381C4D487F4CDFB05F85B069B6824E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -47,6 +53,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_88D933FBCF4076BE044199E57F2D450C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0810B249B22AFD73AE917336C3D4FE80"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6C80741348416F0AC608912F6E030BCF"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -67,6 +85,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -83,6 +109,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -112,6 +154,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0810B249B22AFD73AE917336C3D4FE80"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AutoUpdater.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_0810B249B22AFD73AE917336C3D4FE80"
+                    {
+                    "Name" = "8:AutoUpdater.NET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AutoUpdater.NET.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_AAF34856DA12422DBD2061025902E440"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6C80741348416F0AC608912F6E030BCF"
             {
             "AssemblyRegister" = "3:1"
@@ -174,6 +247,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AE381C4D487F4CDFB05F85B069B6824E"
+            {
+            "SourcePath" = "8:..\\DNSLabWinApp\\Assets\\Images\\winicon.ico"
+            "TargetName" = "8:winicon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_AAF34856DA12422DBD2061025902E440"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -230,15 +323,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DNSLab"
-        "ProductCode" = "8:{5E68DB1A-2CB5-4BAE-ABE6-4CA4BDBAD89B}"
-        "PackageCode" = "8:{8B711C89-FDB2-4198-9374-C2BD40C1F806}"
+        "ProductCode" = "8:{31646DBE-522B-48BC-961F-7C1F4E82FBA0}"
+        "PackageCode" = "8:{F7FE9779-1902-4D60-8A88-C8004B27025D}"
         "UpgradeCode" = "8:{5D2C36B6-B2BA-448B-88B1-12F1979D5148}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.4.0"
         "Manufacturer" = "8:DNSLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.dnslab.ir"
@@ -362,7 +455,7 @@
             "Target" = "8:_1A47645B4F024C59861EEBA26CB0F347"
             "Folder" = "8:_2AF83CD52A3E470DB0BC5ADAC6879E87"
             "WorkingFolder" = "8:_AAF34856DA12422DBD2061025902E440"
-            "Icon" = "8:"
+            "Icon" = "8:_AE381C4D487F4CDFB05F85B069B6824E"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_81A2A6F6A51F47FF971470DF536EB0E6"
@@ -376,7 +469,7 @@
             "Target" = "8:_1A47645B4F024C59861EEBA26CB0F347"
             "Folder" = "8:_2ECE6BA7D0DC43928AC8C1225A0C3B29"
             "WorkingFolder" = "8:_AAF34856DA12422DBD2061025902E440"
-            "Icon" = "8:"
+            "Icon" = "8:_AE381C4D487F4CDFB05F85B069B6824E"
             "Feature" = "8:"
             }
         }
