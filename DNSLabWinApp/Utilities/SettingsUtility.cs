@@ -42,13 +42,13 @@ namespace DNSLabWinApp.Utilities
             switch (key)
             {
                 case SettingKeys.Token:
-                    return Properties.Settings.Default.Token;
+                    return Settings.Default.Token;
                 case SettingKeys.UserInfo:
-                    return Properties.Settings.Default.UserInfo;
+                    return Settings.Default.UserInfo;
                 case SettingKeys.SelectedHosts:
-                    return Properties.Settings.Default.SelectedHosts;
+                    return Settings.Default.SelectedHosts;
                 case SettingKeys.LaunchStartUp:
-                    return Properties.Settings.Default.LaunchStartUp.ToString();
+                    return Settings.Default.LaunchStartUp.ToString();
             }
             return String.Empty;
         }
