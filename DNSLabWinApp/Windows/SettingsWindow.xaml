@@ -8,9 +8,9 @@
         Title="Settings" Height="350" Width="265" ResizeMode="NoResize" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="2.7*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="1.5*"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox  Grid.Row="0" Header="StartUp Settings" Padding="10 10 0 10">
             <CheckBox Name="chkLaunchStartUp">Launch DNSLab on StartUp</CheckBox>

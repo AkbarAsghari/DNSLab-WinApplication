@@ -48,13 +48,11 @@ namespace DNSLabWinApp.Windows
             if (chkLaunchStartUp.IsChecked == true)
             {
                 SettingsUtility.Set(SettingKeys.LaunchStartUp, "true");
-                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
             }
             else
             {
                 SettingsUtility.Set(SettingKeys.LaunchStartUp, "false");
-                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 key.DeleteValue(curAssembly.GetName().Name, false);
             }
 
