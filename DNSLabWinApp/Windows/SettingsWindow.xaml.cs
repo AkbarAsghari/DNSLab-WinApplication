@@ -22,11 +22,20 @@ namespace DNSLabWinApp.Windows
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        private readonly RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        private Assembly curAssembly = Assembly.GetExecutingAssembly();
+
         public SettingsWindow()
         {
             InitializeComponent();
-
+            UpdateSettingsWithCurrentStartupStatus();
             LoadStartUpCheckBoxStatus();
+        }
+
+        private void UpdateSettingsWithCurrentStartupStatus()
+        {
+            if (key.GetValue(curAssembly.GetName().Name) != null)
+                SettingsUtility.Set(SettingKeys.LaunchStartUp, "true");
         }
 
         private void LoadStartUpCheckBoxStatus()
@@ -34,22 +43,22 @@ namespace DNSLabWinApp.Windows
             chkLaunchStartUp.IsChecked = bool.Parse(SettingsUtility.Get(SettingKeys.LaunchStartUp));
         }
 
-        private void chkRunInStartUp_Checked(object sender, RoutedEventArgs e)
+        private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            SettingsUtility.Set(SettingKeys.LaunchStartUp, "true");
+            if (chkLaunchStartUp.IsChecked == true)
+            {
+                SettingsUtility.Set(SettingKeys.LaunchStartUp, "true");
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
+            }
+            else
+            {
+                SettingsUtility.Set(SettingKeys.LaunchStartUp, "false");
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                key.DeleteValue(curAssembly.GetName().Name, false);
+            }
 
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            Assembly curAssembly = Assembly.GetExecutingAssembly();
-            key.SetValue(curAssembly.GetName().Name, curAssembly.Location);
-        }
-
-        private void chkRunInStartUp_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SettingsUtility.Set(SettingKeys.LaunchStartUp, "false");
-
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            Assembly curAssembly = Assembly.GetExecutingAssembly();
-            key.DeleteValue(curAssembly.GetName().Name, false);
+            this.Close();
         }
     }
 }
