@@ -92,6 +92,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -323,15 +331,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DNSLab"
-        "ProductCode" = "8:{31646DBE-522B-48BC-961F-7C1F4E82FBA0}"
-        "PackageCode" = "8:{F7FE9779-1902-4D60-8A88-C8004B27025D}"
+        "ProductCode" = "8:{61874E8C-8BEE-4F44-80DD-976F6A406C00}"
+        "PackageCode" = "8:{75DD34DA-F267-4033-A054-4118F2DB1B18}"
         "UpgradeCode" = "8:{5D2C36B6-B2BA-448B-88B1-12F1979D5148}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4.0"
+        "ProductVersion" = "8:1.4.3"
         "Manufacturer" = "8:DNSLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.dnslab.ir"
