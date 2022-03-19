@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DNSLabWinApp.Properties;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -14,16 +15,16 @@ namespace DNSLabWinApp.Utilities
             switch (key)
             {
                 case SettingKeys.Token:
-                    Properties.Settings.Default.Token = value;
+                    Settings.Default.Token = value;
                     break;
                 case SettingKeys.UserInfo:
-                    Properties.Settings.Default.UserInfo = value;
+                    Settings.Default.UserInfo = value;
                     break;
                 case SettingKeys.SelectedHosts:
-                    Properties.Settings.Default.SelectedHosts = value;
+                    Settings.Default.SelectedHosts = value;
                     break;
                 case SettingKeys.LaunchStartUp:
-                    Properties.Settings.Default.LaunchStartUp = bool.Parse(value);
+                    Settings.Default.LaunchStartUp = bool.Parse(value);
                     break;
             }
             Properties.Settings.Default.Save();
@@ -31,6 +32,13 @@ namespace DNSLabWinApp.Utilities
 
         public static string Get(SettingKeys key)
         {
+            if (Settings.Default.UpgradeRequired)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.UpgradeRequired = false;
+                Settings.Default.Save();
+            }
+
             switch (key)
             {
                 case SettingKeys.Token:
