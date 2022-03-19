@@ -30,7 +30,7 @@ namespace DNSLabWinApp.Windows
 
             notifyIcon = new System.Windows.Forms.NotifyIcon();
             notifyIcon.Icon = new System.Drawing.Icon(AppDomain.CurrentDomain.BaseDirectory + "/Assets/Images/icon.ico");
-            notifyIcon.MouseDown += NotifyIcon_MouseDown; ; ;
+            notifyIcon.MouseDown += NotifyIcon_MouseDown;
 
             // Initialize contextMenu1
             var contextMenu = new System.Windows.Forms.ContextMenu();
@@ -43,8 +43,6 @@ namespace DNSLabWinApp.Windows
             exitMenuItem.Text = "E&xit";
             exitMenuItem.Click += MenuExit_Click;
 
-
-
             contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]
             {
                 refreshMenuItem,
@@ -53,6 +51,7 @@ namespace DNSLabWinApp.Windows
 
             notifyIcon.Text = "DNSLab Dynamic DNS";
             notifyIcon.ContextMenu = contextMenu;
+            this.Hide();
         }
 
         private void NotifyIcon_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
