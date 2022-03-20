@@ -78,45 +78,73 @@ namespace dnslabwin
 
         private async Task UpdateIPAddress()
         {
-            bntRefreshNow.IsEnabled = false;
+            try
+            {
+                bntRefreshNow.IsEnabled = false;
 
-            var ip = await _IPRepository.GetIP();
-            txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { ip.iPv4 }";
-            txbIPAddress.Text = ip.iPv4;
-            imgIPInfo.SetAlert(AlertEnum.Success);
+                var ip = await _IPRepository.GetIP();
+                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { ip.iPv4 }";
+                txbIPAddress.Text = ip.iPv4;
+                imgIPInfo.SetAlert(AlertEnum.Success);
+            }
+            catch (Exception ex)
+            {
+                string exceptionMessage = $"Exception : { ex.Message } ";
+                if (ex.InnerException != null)
+                    exceptionMessage += $"Inner Exception : { ex.InnerException.Message }";
 
-            bntRefreshNow.IsEnabled = true;
+                imgIPInfo.SetAlert(AlertEnum.Danger);
+                txblockStatusBar.Text = exceptionMessage;
+            }
+            finally
+            {
+                bntRefreshNow.IsEnabled = true;
+            }
         }
 
         private async Task UpdateDNSIPAddress()
         {
-            btnEditHost.IsEnabled = false;
-
-            IEnumerable<Guid> selectedHosts = new List<Guid>();
-            string strSelectedHosts = SettingsUtility.Get(SettingKeys.SelectedHosts);
-            if (!String.IsNullOrEmpty(strSelectedHosts))
-                selectedHosts = JsonConvert.DeserializeObject<IEnumerable<Guid>>(strSelectedHosts).ToList();
-
-            if (selectedHosts.Count() == 0)
+            try
             {
-                imgUpdateInfo.SetAlert(AlertEnum.Warning);
-                txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected";
-            }
-            else
-            {
-                if (await _DNSRepository.UpdateDNSIPAddress(selectedHosts))
+                btnEditHost.IsEnabled = false;
+
+                IEnumerable<Guid> selectedHosts = new List<Guid>();
+                string strSelectedHosts = SettingsUtility.Get(SettingKeys.SelectedHosts);
+                if (!String.IsNullOrEmpty(strSelectedHosts))
+                    selectedHosts = JsonConvert.DeserializeObject<IEnumerable<Guid>>(strSelectedHosts).ToList();
+
+                if (selectedHosts.Count() == 0)
                 {
-                    imgUpdateInfo.SetAlert(AlertEnum.Success);
-                    txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected for dynamic update";
+                    imgUpdateInfo.SetAlert(AlertEnum.Warning);
+                    txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected";
                 }
                 else
                 {
-                    imgUpdateInfo.SetAlert(AlertEnum.Danger);
-                    txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts does't update";
+                    if (await _DNSRepository.UpdateDNSIPAddress(selectedHosts))
+                    {
+                        imgUpdateInfo.SetAlert(AlertEnum.Success);
+                        txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected for dynamic update";
+                    }
+                    else
+                    {
+                        imgUpdateInfo.SetAlert(AlertEnum.Danger);
+                        txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts does't update";
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                string exceptionMessage = $"Exception : { ex.Message } ";
+                if (ex.InnerException != null)
+                    exceptionMessage += $"Inner Exception : { ex.InnerException.Message }";
 
-            btnEditHost.IsEnabled = true;
+                imgUpdateInfo.SetAlert(AlertEnum.Danger);
+                txblockStatusBar.Text = exceptionMessage;
+            }
+            finally
+            {
+                btnEditHost.IsEnabled = true;
+            }
         }
 
         private void LoadAccountInfo()
