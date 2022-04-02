@@ -248,9 +248,9 @@ namespace dnslabwin
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            this.Hide();
             NotifyIcon.Show();
             e.Cancel = true;
-            this.Hide();
         }
 
         public void BringToForeground()

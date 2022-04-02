@@ -39,6 +39,8 @@ namespace DNSLabWinApp
 
             if (isOwned)
             {
+                StartupUri = new Uri("Windows/MainWindow.xaml", UriKind.Relative);
+
                 // Spawn a thread which will be waiting for our event
                 var thread = new Thread(
                     () =>
