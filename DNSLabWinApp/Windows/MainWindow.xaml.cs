@@ -23,6 +23,7 @@ using DNSLabWinApp.Repository;
 using DNSLabWinApp.Enums;
 using AutoUpdaterDotNET;
 using DNSLabWinApp.Windows;
+using DNSLabWinApp.DTOs.IP;
 
 namespace dnslabwin
 {
@@ -35,7 +36,9 @@ namespace dnslabwin
         private TimeSpan RemainTime;
         private IPRepository _IPRepository;
         private DNSRepository _DNSRepository;
+        private IPDTO IPDTO;
         private readonly TaskbarTrayIconWindow NotifyIcon;
+
         public MainWindow()
         {
             NotifyIcon = new TaskbarTrayIconWindow(this);
@@ -82,9 +85,9 @@ namespace dnslabwin
             {
                 bntRefreshNow.IsEnabled = false;
 
-                var ip = await _IPRepository.GetIP();
-                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { ip.iPv4 }";
-                txbIPAddress.Text = ip.iPv4;
+                IPDTO = await _IPRepository.GetIP();
+                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { IPDTO.iPv4 }";
+                txbIPAddress.Text = IPDTO.iPv4;
                 imgIPInfo.SetAlert(AlertEnum.Success);
             }
             catch (Exception ex)
@@ -266,6 +269,19 @@ namespace dnslabwin
             this.Topmost = true;
             this.Topmost = false;
             this.Focus();
+        }
+
+        private async void CopyIPAddress_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            if (IPDTO == null)
+                await UpdateIPAddress();
+
+            if (IPDTO == null || String.IsNullOrEmpty(IPDTO.iPv4))
+                MessageBox.Show("IP Address Not Found");
+
+            Clipboard.SetText(IPDTO.iPv4);
+
+            txblockStatusBar.Text = $"IP Address ({IPDTO.iPv4}) Copy to clipboard just now.";
         }
     }
 }

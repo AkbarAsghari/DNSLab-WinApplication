@@ -19,14 +19,8 @@
                     <MenuItem Header="_Exit" Click="ExitMenu_Click" />
                 </MenuItem>
                 <MenuItem Header="_Edit">
-                    <MenuItem Header="_Copy IP Address" />
+                    <MenuItem Header="_Copy IP Address" Click="CopyIPAddress_ClickAsync" />
                     <MenuItem Header="Settings" Click="SettingsMenu_Click"/>
-                </MenuItem>
-                <MenuItem Header="_Tools">
-                    <MenuItem Header="_Logs">
-                        <MenuItem Header="_Application Log" />
-                        <MenuItem Header="_Service Log" />
-                    </MenuItem>
                 </MenuItem>
             </Menu>
 
