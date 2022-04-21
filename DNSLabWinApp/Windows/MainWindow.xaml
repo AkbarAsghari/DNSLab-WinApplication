@@ -39,7 +39,7 @@
                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="23" FontWeight="Bold">DNSLab</TextBlock>
                 </Grid>
 
-                <GroupBox Grid.Column="1" Header="Status">
+                <GroupBox Grid.Column="1" Header="{StaticResource Status}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="7*"></ColumnDefinition>

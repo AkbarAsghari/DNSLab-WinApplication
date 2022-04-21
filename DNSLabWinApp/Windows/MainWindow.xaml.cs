@@ -24,6 +24,7 @@ using DNSLabWinApp.Enums;
 using AutoUpdaterDotNET;
 using DNSLabWinApp.Windows;
 using DNSLabWinApp.DTOs.IP;
+using DNSLabWinApp;
 
 namespace dnslabwin
 {
@@ -41,6 +42,9 @@ namespace dnslabwin
 
         public MainWindow()
         {
+            //Resources For Multi Language
+            UpdateResources();
+
             NotifyIcon = new TaskbarTrayIconWindow(this);
 
             InitilizeDataAsync().GetAwaiter();
@@ -58,11 +62,24 @@ namespace dnslabwin
             updateRemainTimer.Tick += UpdateRemainTimer_Tick;
             updateRemainTimer.Start();
 
+
             if (bool.Parse(SettingsUtility.Get(SettingKeys.LaunchStartUp)))
             {
                 NotifyIcon.Show();
                 this.Hide();
             }
+        }
+
+        private void UpdateResources()
+        {
+            var selectedCulture = SettingsUtility.Get(SettingKeys.SelectedCulture);
+            if (String.IsNullOrEmpty(selectedCulture))
+            {
+                SettingsUtility.Set(SettingKeys.SelectedCulture, "fa-FA");
+                App.SelectCulture("fa-FA");
+            }
+            else
+                App.SelectCulture(selectedCulture);
         }
 
         private void UpdateRemainTimer_Tick(object sender, EventArgs e)

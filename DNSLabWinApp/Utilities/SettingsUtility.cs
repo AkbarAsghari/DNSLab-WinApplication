@@ -26,6 +26,10 @@ namespace DNSLabWinApp.Utilities
                 case SettingKeys.LaunchStartUp:
                     Settings.Default.LaunchStartUp = bool.Parse(value);
                     break;
+                case SettingKeys.SelectedCulture:
+                    Settings.Default.SelectedCulture = value;
+                    break;
+
             }
             Properties.Settings.Default.Save();
         }
@@ -49,6 +53,8 @@ namespace DNSLabWinApp.Utilities
                     return Settings.Default.SelectedHosts;
                 case SettingKeys.LaunchStartUp:
                     return Settings.Default.LaunchStartUp.ToString();
+                case SettingKeys.SelectedCulture:
+                   return Settings.Default.SelectedCulture;
             }
             return String.Empty;
         }
@@ -60,5 +66,6 @@ namespace DNSLabWinApp.Utilities
         UserInfo = 1,
         SelectedHosts = 2,
         LaunchStartUp = 3,
+        SelectedCulture = 4,
     }
 }

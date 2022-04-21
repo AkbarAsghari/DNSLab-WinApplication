@@ -24,12 +24,17 @@ namespace DNSLabWinApp.Windows
     {
         private readonly RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         private Assembly curAssembly = Assembly.GetExecutingAssembly();
-
         public SettingsWindow()
         {
             InitializeComponent();
             UpdateSettingsWithCurrentStartupStatus();
             LoadStartUpCheckBoxStatus();
+            LoadLanguageCheckBoxStatus();
+        }
+
+        private void LoadLanguageCheckBoxStatus()
+        {
+            cmbLanguage.SelectedValue = SettingsUtility.Get(SettingKeys.SelectedCulture);
         }
 
         private void UpdateSettingsWithCurrentStartupStatus()
@@ -54,6 +59,16 @@ namespace DNSLabWinApp.Windows
             {
                 SettingsUtility.Set(SettingKeys.LaunchStartUp, "false");
                 key.DeleteValue(curAssembly.GetName().Name, false);
+            }
+
+            if (cmbLanguage.SelectedIndex != -1)
+            {
+                if (cmbLanguage.SelectedValue.ToString() != SettingsUtility.Get(SettingKeys.SelectedCulture))
+                {
+                    SettingsUtility.Set(SettingKeys.SelectedCulture, cmbLanguage.SelectedValue.ToString());
+                    App.SelectCulture(cmbLanguage.SelectedValue.ToString());
+                    MessageBox.Show(FindResource("LanguageAfterChangeMessage").ToString());
+                }
             }
 
             this.Close();

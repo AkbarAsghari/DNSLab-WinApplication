@@ -82,5 +82,17 @@ namespace DNSLabWinApp.Properties {
                 this["UpgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SelectedCulture {
+            get {
+                return ((string)(this["SelectedCulture"]));
+            }
+            set {
+                this["SelectedCulture"] = value;
+            }
+        }
     }
 }
