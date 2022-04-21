@@ -86,7 +86,7 @@ namespace dnslabwin
         {
             RemainTime = RemainTime.Add(new TimeSpan(0, 0, -1));
 
-            txbNextChangeTime.Text = $"{RemainTime.Minutes} min {RemainTime.Seconds} sec";
+            txbNextChangeTime.Text = $" : {RemainTime.Minutes} { FindResource("Min") } {RemainTime.Seconds} { FindResource("Sec") }";
         }
 
         private async void CheckForUpdateHostsIPTimer_Tick(object sender, EventArgs e)
@@ -103,8 +103,8 @@ namespace dnslabwin
                 bntRefreshNow.IsEnabled = false;
 
                 IPDTO = await _IPRepository.GetIP();
-                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: Remote IP Found: { IPDTO.iPv4 }";
-                txbIPAddress.Text = IPDTO.iPv4;
+                txblockStatusBar.Text = $"{DateTime.Now.ToString("hh:mm tt")}: { FindResource("RemoteIpFound") } : { IPDTO.iPv4 }";
+                txbIPAddress.Text = $" : { IPDTO.iPv4 }";
                 imgIPInfo.SetAlert(AlertEnum.Success);
             }
             catch (Exception ex)
@@ -136,19 +136,19 @@ namespace dnslabwin
                 if (selectedHosts.Count() == 0)
                 {
                     imgUpdateInfo.SetAlert(AlertEnum.Warning);
-                    txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected";
+                    txbUpdateMessage.Text = $" : {selectedHosts.Count()} { FindResource("HostsSelected") }";
                 }
                 else
                 {
                     if (await _DNSRepository.UpdateDNSIPAddress(selectedHosts))
                     {
                         imgUpdateInfo.SetAlert(AlertEnum.Success);
-                        txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts selected for dynamic update";
+                        txbUpdateMessage.Text = $" : {selectedHosts.Count()} { FindResource("HostsSelectedForDynamicUpdate") }";
                     }
                     else
                     {
                         imgUpdateInfo.SetAlert(AlertEnum.Danger);
-                        txbUpdateMessage.Text = $"{selectedHosts.Count()} Hosts does't update";
+                        txbUpdateMessage.Text = $" : {selectedHosts.Count()} { FindResource("HostsDoesNotUpdate") }";
                     }
                 }
             }
@@ -177,8 +177,8 @@ namespace dnslabwin
                     var userInfo = JsonConvert.DeserializeObject<UserInfo>(userInfoJson);
                     if (userInfo != null)
                     {
-                        txbUserName.Text = userInfo.Username;
-                        txbEmail.Text = userInfo.Email;
+                        txbUserName.Text = $" : { userInfo.Username }";
+                        txbEmail.Text = $" : { userInfo.Email }";
                         imgAccountInfo.SetAlert(AlertEnum.Success);
                     }
                 }
@@ -294,11 +294,11 @@ namespace dnslabwin
                 await UpdateIPAddress();
 
             if (IPDTO == null || String.IsNullOrEmpty(IPDTO.iPv4))
-                MessageBox.Show("IP Address Not Found");
+                MessageBox.Show($"{ FindResource("IPAddressNotFound") }");
 
             Clipboard.SetText(IPDTO.iPv4);
 
-            txblockStatusBar.Text = $"IP Address ({IPDTO.iPv4}) Copy to clipboard just now.";
+            txblockStatusBar.Text = $"{ FindResource("IPAddress") } ({IPDTO.iPv4}) { FindResource("CopyToClipboardJustNow") }.";
         }
     }
 }

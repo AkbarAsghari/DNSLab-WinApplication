@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dnslabwin.Windows" xmlns:ns="clr-namespace:DNSLabWinApp.Converters"
         mc:Ignorable="d"
-        Title="Manage Hosts" Height="350" Width="265" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="{StaticResource ManageHosts}" Height="350" Width="265" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Window.Resources>
         <ns:VisibilityNotConverter x:Key="VisibilityNotConverter" />
     </Window.Resources>
@@ -15,10 +15,8 @@
             <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock TextWrapping="Wrap" Margin="5">
-            Please select the hosts to be associated with this client. You can manage your hosts within your account on the dnslab.ir website
-        </TextBlock>
-        <GroupBox Grid.Row="1" Header="Hosts">
+        <TextBlock TextWrapping="Wrap" Margin="5" Text="{StaticResource ManageHostMessage}"></TextBlock>
+        <GroupBox Grid.Row="1" Header="{StaticResource Hosts}">
             <Grid>
                 <ProgressBar IsIndeterminate="True" Margin="0 75 0 75" Visibility="{Binding ElementName=HostListView ,Converter={StaticResource VisibilityNotConverter} , Path=Visibility}"></ProgressBar>
                 <ListView Margin="1" HorizontalAlignment="Stretch" Name="HostListView" BorderThickness="0" Visibility="Collapsed">
@@ -73,8 +71,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnSave" Grid.Column="0" Margin="30 10 5 10" Click="btnSave_Click">Save</Button>
-            <Button x:Name="btnCancel" Grid.Column="1" Margin="5 10 30 10" Click="btnCancel_Click" >Cancel</Button>
+            <Button x:Name="btnSave" Grid.Column="0" Margin="30 10 5 10" Click="btnSave_Click" Content="{StaticResource Save}"></Button>
+            <Button x:Name="btnCancel" Grid.Column="1" Margin="5 10 30 10" Click="btnCancel_Click" Content="{StaticResource Cancel}"></Button>
         </Grid>
     </Grid>
 </Window>

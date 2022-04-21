@@ -36,11 +36,11 @@ namespace DNSLabWinApp.Windows
             var contextMenu = new System.Windows.Forms.ContextMenu();
 
             var refreshMenuItem = new System.Windows.Forms.MenuItem();
-            refreshMenuItem.Text = "&Refresh Now";
+            refreshMenuItem.Text = FindResource("RefreshNow").ToString();
             refreshMenuItem.Click += MenuRefresh_Click;
 
             var exitMenuItem = new System.Windows.Forms.MenuItem();
-            exitMenuItem.Text = "E&xit";
+            exitMenuItem.Text = FindResource("Exit").ToString();
             exitMenuItem.Click += MenuExit_Click;
 
             contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[]

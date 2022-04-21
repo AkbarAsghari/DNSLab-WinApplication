@@ -35,7 +35,7 @@
         </Grid>
         <Grid Grid.Row="2">
             <TextBox Name="txtUserName" FontSize="20" Margin="40 3 40 5" Padding="1" />
-            <TextBlock IsHitTestVisible="False" Text="Username" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 3 40 3" Foreground="DarkGray">
+            <TextBlock IsHitTestVisible="False" Text="{StaticResource Username}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 3 40 3" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -50,7 +50,7 @@
         </Grid>
         <Grid Grid.Row="3">
             <PasswordBox Name="txtPassword" FontSize="20" Margin="40 3 40 5" Padding="1" />
-            <TextBlock IsHitTestVisible="False" Text="Password" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 3 40 3" Foreground="DarkGray">
+            <TextBlock IsHitTestVisible="False" Text="{StaticResource Password}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50 3 40 3" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -66,19 +66,19 @@
         <Grid Grid.Row="4">
             <Grid Margin="40 3 40 5">
                 <ProgressBar IsIndeterminate="True" Visibility="{Binding ElementName=btnSignIn,Converter={StaticResource NotConverter} , Path=IsEnabled}"></ProgressBar>
-                <Button Name="btnSignIn" Visibility="{Binding ElementName=btnSignIn , Converter={StaticResource BoolToHiddenConverter} , Path=IsEnabled}"  FontSize="16" Background="LightSeaGreen" Foreground="White" Content="Sign In" Click="btnSignIn_Click" />
+                <Button Name="btnSignIn" Visibility="{Binding ElementName=btnSignIn , Converter={StaticResource BoolToHiddenConverter} , Path=IsEnabled}"  FontSize="16" Background="LightSeaGreen" Foreground="White" Content="{StaticResource SignIn}" Click="btnSignIn_Click" />
             </Grid>
         </Grid>
         <Grid Grid.Row="5" Margin="40 0 40 0" >
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left">
                      <Hyperlink NavigateUri="http://www.dnslab.ir/user/register" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
-                        Sign Up
+                        <TextBlock Text="{StaticResource SignUp}"/>
                      </Hyperlink>
                 </TextBlock>
                 <TextBlock DockPanel.Dock="Right">
                       <Hyperlink NavigateUri="http://www.dnslab.ir/user/ForgetPassword" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
-                        Forget Password?
+                        <TextBlock Text="{StaticResource ForgetPassword}"/>
                      </Hyperlink>
                 </TextBlock>
                 <Grid></Grid>

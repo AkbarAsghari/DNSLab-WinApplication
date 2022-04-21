@@ -30,4 +30,14 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="StartUpSettings">تنظیمات اجرا</system:String>
     <system:String x:Key="StartUpChackBoxMessage">هنگام روشن شدن سیستم برنامه اجرا شود</system:String>
     <system:String x:Key="Language">زبان</system:String>
+    <system:String x:Key="Email">ایمیل</system:String>
+    <system:String x:Key="IP">IP</system:String>
+    <system:String x:Key="Min">دقیقه</system:String>
+    <system:String x:Key="Sec">ثانیه</system:String>
+    <system:String x:Key="HostsSelected">هاست انتخاب شده است</system:String>
+    <system:String x:Key="HostsSelectedForDynamicUpdate">هاست اتنخاب شده برای تغییرات خودکار</system:String>
+    <system:String x:Key="HostsDoesNotUpdate">هاست ها بروز نشدند</system:String>
+    <system:String x:Key="IPAddressNotFound">آدرس آی پی یافت نشد</system:String>
+    <system:String x:Key="IPAddress">آدرس آی پی</system:String>
+    <system:String x:Key="CopyToClipboardJustNow">به کلیپ برد اضافه شد</system:String>
 </ResourceDictionary>

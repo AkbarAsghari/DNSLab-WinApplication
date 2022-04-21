@@ -30,4 +30,14 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="StartUpSettings">StartUp Settings</system:String>
     <system:String x:Key="StartUpChackBoxMessage">Launch DNSLab on StartUp</system:String>
     <system:String x:Key="Language">Language</system:String>
+    <system:String x:Key="Email">Email</system:String>
+    <system:String x:Key="IP">IP</system:String>
+    <system:String x:Key="Min">min</system:String>
+    <system:String x:Key="Sec">sec</system:String>
+    <system:String x:Key="HostsSelected">Hosts selected</system:String>
+    <system:String x:Key="HostsSelectedForDynamicUpdate">Hosts selected for dynamic update</system:String>
+    <system:String x:Key="HostsDoesNotUpdate">Hosts does't update</system:String>
+    <system:String x:Key="IPAddressNotFound">IP Address Not Found</system:String>
+    <system:String x:Key="IPAddress">IP Address</system:String>
+    <system:String x:Key="CopyToClipboardJustNow">Copy to clipboard just now</system:String>
 </ResourceDictionary>
