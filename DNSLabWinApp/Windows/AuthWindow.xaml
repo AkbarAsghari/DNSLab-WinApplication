@@ -77,7 +77,7 @@
                      </Hyperlink>
                 </TextBlock>
                 <TextBlock DockPanel.Dock="Right">
-                      <Hyperlink NavigateUri="http://www.dnslab.ir/user/forget" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
+                      <Hyperlink NavigateUri="http://www.dnslab.ir/user/ForgetPassword" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
                         Forget Password?
                      </Hyperlink>
                 </TextBlock>

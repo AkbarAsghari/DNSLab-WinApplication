@@ -5,5 +5,24 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!-- String resource that can be localized -->
     <system:String x:Key="Status">Status</system:String>
     <system:String x:Key="LanguageAfterChangeMessage">Please restart application for change language effect</system:String>
+    <system:String x:Key="File">Status</system:String>
+    <system:String x:Key="Edit">Status</system:String>
+    <system:String x:Key="Tools">Status</system:String>
+    <system:String x:Key="Hide">Status</system:String>
+    <system:String x:Key="Exit">Status</system:String>
+    <system:String x:Key="CoptyIPAddress">Status</system:String>
+    <system:String x:Key="Settings">Status</system:String>
+    <system:String x:Key="EditHosts">Status</system:String>
+    <system:String x:Key="RefreshNow">Status</system:String>
+    <system:String x:Key="Username">Status</system:String>
+    <system:String x:Key="Password">Status</system:String>
+    <system:String x:Key="SignIn">Status</system:String>
+    <system:String x:Key="ForgetPassword">Status</system:String>
+    <system:String x:Key="SignUp">Status</system:String>
+    <system:String x:Key="Status">Status</system:String>
+    <system:String x:Key="Status">Status</system:String>
+    <system:String x:Key="Status">Status</system:String>
+    <system:String x:Key="Status">Status</system:String>
+
 
 </ResourceDictionary>
