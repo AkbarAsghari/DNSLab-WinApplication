@@ -5,24 +5,29 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!-- String resource that can be localized -->
     <system:String x:Key="Status">Status</system:String>
     <system:String x:Key="LanguageAfterChangeMessage">Please restart application for change language effect</system:String>
-    <system:String x:Key="File">Status</system:String>
-    <system:String x:Key="Edit">Status</system:String>
-    <system:String x:Key="Tools">Status</system:String>
-    <system:String x:Key="Hide">Status</system:String>
-    <system:String x:Key="Exit">Status</system:String>
-    <system:String x:Key="CoptyIPAddress">Status</system:String>
-    <system:String x:Key="Settings">Status</system:String>
-    <system:String x:Key="EditHosts">Status</system:String>
-    <system:String x:Key="RefreshNow">Status</system:String>
-    <system:String x:Key="Username">Status</system:String>
-    <system:String x:Key="Password">Status</system:String>
-    <system:String x:Key="SignIn">Status</system:String>
-    <system:String x:Key="ForgetPassword">Status</system:String>
-    <system:String x:Key="SignUp">Status</system:String>
-    <system:String x:Key="Status">Status</system:String>
-    <system:String x:Key="Status">Status</system:String>
-    <system:String x:Key="Status">Status</system:String>
-    <system:String x:Key="Status">Status</system:String>
-
-
+    <system:String x:Key="File">File</system:String>
+    <system:String x:Key="Edit">Edit</system:String>
+    <system:String x:Key="Tools">Tools</system:String>
+    <system:String x:Key="Hide">Hide</system:String>
+    <system:String x:Key="Exit">Exit</system:String>
+    <system:String x:Key="CoptyIPAddress">Copty IP Address</system:String>
+    <system:String x:Key="Settings">Settings</system:String>
+    <system:String x:Key="EditHosts">Edit Hosts</system:String>
+    <system:String x:Key="RefreshNow">Refresh Now</system:String>
+    <system:String x:Key="Username">Username</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="SignIn">Sign In</system:String>
+    <system:String x:Key="ForgetPassword">Forget Password</system:String>
+    <system:String x:Key="SignUp">Sign Up</system:String>
+    <system:String x:Key="ManageHosts">Manage Hosts</system:String>
+    <system:String x:Key="Hosts">Hosts</system:String>
+    <system:String x:Key="ManageHostMessage">Please select the hosts to be associated with this client. You can manage your hosts within your account on the dnslab.ir website</system:String>
+    <system:String x:Key="Save">Save</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
+    <system:String x:Key="Updating">Updating</system:String>
+    <system:String x:Key="NextCheck">Next Check</system:String>
+    <system:String x:Key="RemoteIpFound">Remote Ip Found</system:String>
+    <system:String x:Key="StartUpSettings">StartUp Settings</system:String>
+    <system:String x:Key="StartUpChackBoxMessage">Launch DNSLab on StartUp</system:String>
+    <system:String x:Key="Language">Language</system:String>
 </ResourceDictionary>

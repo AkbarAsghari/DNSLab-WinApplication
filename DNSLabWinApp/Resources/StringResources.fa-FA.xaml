@@ -5,5 +5,29 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <!-- String resource that can be localized -->
     <system:String x:Key="Status">وضعیت</system:String>
     <system:String x:Key="LanguageAfterChangeMessage">لطفا برای اعمال تغییر زبان برنامه را ری استارت کنید</system:String>
-
+    <system:String x:Key="File">فایل</system:String>
+    <system:String x:Key="Edit">ویرایش</system:String>
+    <system:String x:Key="Tools">ابزار</system:String>
+    <system:String x:Key="Hide">مخفی سازی</system:String>
+    <system:String x:Key="Exit">خروج</system:String>
+    <system:String x:Key="CoptyIPAddress">کپی کردن آدرس آی پی عمومی</system:String>
+    <system:String x:Key="Settings">تنظیمات</system:String>
+    <system:String x:Key="EditHosts">ویرایش هاست ها</system:String>
+    <system:String x:Key="RefreshNow">الان بروز کن</system:String>
+    <system:String x:Key="Username">نام کاربری</system:String>
+    <system:String x:Key="Password">رمز عبور</system:String>
+    <system:String x:Key="SignIn">ورود</system:String>
+    <system:String x:Key="ForgetPassword">فراموشی رمز عبور</system:String>
+    <system:String x:Key="SignUp">ثبت نام</system:String>
+    <system:String x:Key="ManageHosts">مدیریت هاست ها</system:String>
+    <system:String x:Key="Hosts">هاست ها</system:String>
+    <system:String x:Key="ManageHostMessage">لطفا هاست هایی که میخواهید آی پی آن ها با این سیستم بروز شود را انتخاب نمایید</system:String>
+    <system:String x:Key="Save">ذخیره</system:String>
+    <system:String x:Key="Cancel">انصراف</system:String>
+    <system:String x:Key="Updating">بروزرسانی ها</system:String>
+    <system:String x:Key="NextCheck">بررسی بعدی</system:String>
+    <system:String x:Key="RemoteIpFound">آی پی عمومی</system:String>
+    <system:String x:Key="StartUpSettings">تنظیمات اجرا</system:String>
+    <system:String x:Key="StartUpChackBoxMessage">هنگام روشن شدن سیستم برنامه اجرا شود</system:String>
+    <system:String x:Key="Language">زبان</system:String>
 </ResourceDictionary>
