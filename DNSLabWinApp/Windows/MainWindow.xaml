@@ -8,9 +8,9 @@
         Title="DNSLab" Height="240" Width="470" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Visibility="Collapsed" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.Resources>
         <ns:NotConverter x:Key="NotConverter" />
-        <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
+        <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden"  />
     </Window.Resources>
-    <Grid>
+    <Grid FlowDirection="{StaticResource FlowDirection}">
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="{StaticResource File}">

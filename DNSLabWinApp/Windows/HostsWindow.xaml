@@ -9,7 +9,7 @@
     <Window.Resources>
         <ns:VisibilityNotConverter x:Key="VisibilityNotConverter" />
     </Window.Resources>
-    <Grid>
+    <Grid FlowDirection="{StaticResource FlowDirection}">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>

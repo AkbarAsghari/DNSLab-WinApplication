@@ -10,7 +10,7 @@
         <ns:NotConverter x:Key="NotConverter" />
         <ns:BoolToHiddenConverter x:Key="BoolToHiddenConverter" TrueValue="Visible" FalseValue="Hidden" />
     </Window.Resources>
-    <Grid>
+    <Grid FlowDirection="{StaticResource FlowDirection}">
         <Grid.RowDefinitions>
             <RowDefinition Height="23"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>

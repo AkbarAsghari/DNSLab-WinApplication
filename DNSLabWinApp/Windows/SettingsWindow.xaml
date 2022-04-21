@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DNSLabWinApp.Windows"
         mc:Ignorable="d"
         Title="{StaticResource Settings}" Height="350" Width="265" ResizeMode="NoResize" >
-    <Grid>
+    <Grid FlowDirection="{StaticResource FlowDirection}">
         <Grid.RowDefinitions>
             <RowDefinition Height="2.7*"></RowDefinition>
             <RowDefinition Height="2.7*"></RowDefinition>

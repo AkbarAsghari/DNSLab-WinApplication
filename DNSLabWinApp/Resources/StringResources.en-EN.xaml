@@ -40,4 +40,5 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="IPAddressNotFound">IP Address Not Found</system:String>
     <system:String x:Key="IPAddress">IP Address</system:String>
     <system:String x:Key="CopyToClipboardJustNow">Copy to clipboard just now</system:String>
+    <FlowDirection x:Key="FlowDirection">LeftToRight</FlowDirection>
 </ResourceDictionary>
