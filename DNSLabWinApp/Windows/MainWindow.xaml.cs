@@ -231,7 +231,7 @@ namespace dnslabwin
 
         public async Task InitilizeDataAsync()
         {
-            AutoUpdater.Start("http://api.dnslab.ir/Files/version/win/check");
+            AutoUpdater.Start("https://api.dnslab.ir/Files/version/win/check");
 
             _IPRepository = new IPRepository();
             _DNSRepository = new DNSRepository();
