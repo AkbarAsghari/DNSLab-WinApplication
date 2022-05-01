@@ -331,15 +331,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DNSLab"
-        "ProductCode" = "8:{D689B52C-7713-4FCF-905D-16C06E2CCD4F}"
-        "PackageCode" = "8:{D256FC40-0D4B-4BC0-8319-8C9F1CC37F5A}"
+        "ProductCode" = "8:{158EBF94-056C-4248-B99B-78BF10BE61FF}"
+        "PackageCode" = "8:{ED4850EB-90D5-41B3-B9BD-D1E126031930}"
         "UpgradeCode" = "8:{5D2C36B6-B2BA-448B-88B1-12F1979D5148}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.0"
+        "ProductVersion" = "8:1.6.2"
         "Manufacturer" = "8:DNSLab"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.dnslab.ir"
@@ -881,7 +881,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1A47645B4F024C59861EEBA26CB0F347"
             {
-            "SourcePath" = "8:..\\DNSLabWinApp\\obj\\Debug\\DNSLabWinApp.exe"
+            "SourcePath" = "8:..\\DNSLabWinApp\\obj\\Release\\DNSLabWinApp.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AAF34856DA12422DBD2061025902E440"
