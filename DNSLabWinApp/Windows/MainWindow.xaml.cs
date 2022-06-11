@@ -177,7 +177,7 @@ namespace dnslabwin
                     var userInfo = JsonConvert.DeserializeObject<UserInfo>(userInfoJson);
                     if (userInfo != null)
                     {
-                        txbUserName.Text = $" : { userInfo.Username }";
+                        txbUserName.Text = $" : { (String.IsNullOrEmpty(userInfo.Username) ? userInfo.Email : userInfo.Username) }";
                         txbEmail.Text = $" : { userInfo.Email }";
                         imgAccountInfo.SetAlert(AlertEnum.Success);
                     }
