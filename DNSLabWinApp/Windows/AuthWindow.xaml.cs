@@ -57,7 +57,7 @@ namespace dnslabwin.Windows
 
             var token = await repo.Login(new AuthenticateDTO
             {
-                Username = txtUserName.Text,
+                UsernameOrEmail = txtUserName.Text,
                 Password = txtPassword.Password
             });
 
