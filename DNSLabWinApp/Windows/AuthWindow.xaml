@@ -72,12 +72,12 @@
         <Grid Grid.Row="5" Margin="40 0 40 0" >
             <DockPanel>
                 <TextBlock DockPanel.Dock="Left">
-                     <Hyperlink NavigateUri="http://www.dnslab.ir/user/register" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
+                     <Hyperlink NavigateUri="http://www.dnslab.link/user/register" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
                         <TextBlock Text="{StaticResource SignUp}"/>
                      </Hyperlink>
                 </TextBlock>
                 <TextBlock DockPanel.Dock="Right">
-                      <Hyperlink NavigateUri="http://www.dnslab.ir/user/ForgetPassword" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
+                      <Hyperlink NavigateUri="http://www.dnslab.link/user/ForgetPassword" Foreground="LightSeaGreen" RequestNavigate="link_RequestNavigate">
                         <TextBlock Text="{StaticResource ForgetPassword}"/>
                      </Hyperlink>
                 </TextBlock>
